@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+*{ 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--p-surface-ground);
+    color: var(--p-surface-content);
+}
+
+/* .my-app-dark body {
+    background-color: var(--p-surface-ground);
+    color: var(--p-surface-content);
+} */
+
+.w-full {
+    width: 100%;
+}

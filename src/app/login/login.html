@@ -1,0 +1,40 @@
+<div class="card-template">
+    <p-card class="login-card">
+        <ng-template #header>
+            <div class="header-container">
+                <div class="icon-wrapper">
+                    <i class="pi pi-sparkles"></i>
+                </div>
+                <h2 class="title_card">TaskMaster</h2>
+                <span class="subtitle_card">Bem-vindo! Por favor, faça o login.</span>
+            </div>
+        </ng-template>
+
+        <form [formGroup]="reactiveForm" (ngSubmit)="loginSubmit()">
+            <div class="form_card">
+                <p-floatlabel variant="on">
+                    <p-iconfield>
+                        <input pInputText type="email" formControlName="email" id="email" autocomplete="off" class="w-full" />
+                        <p-inputicon class="pi pi-envelope" />
+                    </p-iconfield>
+                    <label for="email">E-mail</label>
+                </p-floatlabel>
+
+                <p-floatlabel variant="on">
+                    <p-password inputId="password" formControlName="password" 
+                        [feedback]="false" [toggleMask]="true" styleClass="w-full" inputStyleClass="w-full" />
+                    <label for="password">Senha</label>
+                </p-floatlabel>
+            </div>
+        </form>
+        
+        <ng-template #footer>
+            <div class="footer_card">
+                <p-button label="Acessar" (click)="loginSubmit()" icon="pi pi-sign-in" iconPos="right" severity="primary" /> 
+            </div>
+            <div class="register-link">
+                Não tem uma conta? <a href="#">Cadastre-se</a>
+            </div>
+        </ng-template>
+    </p-card>
+</div>
