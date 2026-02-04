@@ -58,14 +58,16 @@ export class Login {
   }
 
   async loginSubmit() {
-    console.log(this.reactiveForm.value);
 
     try{
       let data: any = await lastValueFrom<any>(this.loginService.login(this.reactiveForm.value));
 
-      this.globalService.setToken((data as loginResponseInterface).token);
-
       console.log(data);
+
+      this.messageService.add({severity:'success', summary: 'Success', detail: 'Login successful!'});
+
+      window.location.href = '/tasks';
+
     } catch (error: validationErrorResponseInterface | any) {
       console.log(error)
       if(error.error?.message){

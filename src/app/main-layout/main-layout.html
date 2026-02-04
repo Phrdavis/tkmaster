@@ -1,0 +1,21 @@
+<div class="layout-wrapper">
+    <header class="menu-bar">
+        <div class="menu-section">
+            <app-menu></app-menu>
+            <div class="brand">
+                <span class="logo-text">{{ projectInfo.name }}</span>
+            </div>
+        </div>
+
+        
+        <p-button class="ml-auto" (onClick)="toggleDarkMode()" [icon]="isDarkMode() ? 'pi pi-sun' : 'pi pi-moon'" />
+
+        <p-tag class="p-2" severity="contrast" [value]="projectInfo.version" />
+    </header>
+
+    <main class="layout-content">
+        <div class="content-container">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

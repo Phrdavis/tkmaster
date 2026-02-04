@@ -1,9 +1,54 @@
-<div class="card flex justify-center">
-    <p-drawer [(visible)]="visible" header="Drawer">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
-        </p>
+<div class="menu-container">
+    <p-button (click)="visible = true" icon="pi pi-bars" [text]="true" severity="secondary" />
+
+    <p-drawer [(visible)]="visible" [modal]="true" class="custom-drawer">
+        <ng-template #header>
+            <div class="drawer-header">
+                <i class="pi pi-sparkles logo-icon"></i>
+                <span class="logo-text">{{ projectInfo.name }}</span>
+            </div>
+        </ng-template>
+
+        <div class="drawer-content">
+            <div class="menu-section">
+                <span class="section-title">GERAL</span>
+                <ul class="menu-list">
+                    <li (click)="redirectMenu('/dashboard')" routerLink="/dashboard" routerLinkActive="active-link">
+                        <i class="pi pi-home"></i> <span>Dashboard</span>
+                    </li>
+                    <li (click)="redirectMenu('/tasks')" routerLink="/tasks" routerLinkActive="active-link">
+                        <i class="pi pi-list"></i> <span>Minhas Tarefas</span>
+                    </li>
+                    <li (click)="redirectMenu('/teams')" routerLink="/teams" routerLinkActive="active-link">
+                        <i class="pi pi-users"></i> <span>Minhas Equipes</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu-section">
+                <span class="section-title">CONFIGURAÇÕES</span>
+                <ul class="menu-list">
+                    <li (click)="redirectMenu('/profile')" routerLink="/profile" routerLinkActive="active-link">
+                        <i class="pi pi-user-edit"></i> <span>Meu Perfil</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <ng-template #footer>
+            <div class="drawer-footer">
+                <div class="user-info">
+                    <p-avatar [label]="getInitials(userData.name)" shape="circle" styleClass="bg-primary" />
+                    <div class="user-details">
+                        <span class="user-name">{{ userData.name }}</span>
+                        <span class="user-role">{{ userData.role }}</span>
+                    </div>
+                </div>
+                <div class="footer-group">
+                    <button pButton [icon]="isDarkMode() ? 'pi pi-sun' : 'pi pi-moon'" (click)="toggleDarkMode()" class="w-50"></button>
+                    <button pButton icon="pi pi-sign-out" (click)="logout()" class="p-button-danger w-50"></button>
+                </div>
+            </div>
+        </ng-template>
     </p-drawer>
-    <p-button (click)="visible = true" icon="pi pi-arrow-right" />
 </div>

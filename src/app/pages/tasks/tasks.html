@@ -1,0 +1,76 @@
+
+<h2 class="title-caption m-0 mb-3">Minhas Tasks</h2>
+<div class="card">
+    <p-table
+        #tableTasks
+        class="p-shadow"
+        [value]="items"
+        [columns]="columns"
+        stripedRows
+        [loading]="isLoading"
+        [paginator]="true"
+        [rows]="size"
+        [rowsPerPageOptions]="pageSizeOptions"
+        [showCurrentPageReport]="true"
+        (onPage)="pageChange($event)"
+        [resizableColumns]="true"
+        [globalFilterFields]="getFilterFromColumns()"
+        currentPageReportTemplate="Mostrando {first} - {last} de {totalRecords} Tasks"
+        [tableStyle]="{ 'min-width': '50rem', 'width': '100%' }">
+        <ng-template #caption>
+            <div class="title-div">
+                <div class="actions">
+                    <p-button icon="pi pi-plus" label="Novo"></p-button>
+                    <p-button severity="secondary" icon="pi pi-sync" [disabled]="disabledNext" label="Carregar Mais" (click)="getItems(true)"></p-button>
+                    <p-iconfield iconPosition="left" class="ml-auto">
+                        <p-inputicon>
+                            <i class="pi pi-search"></i>
+                        </p-inputicon>
+                        <input pInputText type="text" (input)="tableTasks.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar palavra-chave" />
+                    </p-iconfield>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #header let-columns>
+            <tr>
+                @for (col of columns; track col) {
+                    <th [pSortableColumn]="col.field">
+                        <div class="sortable">
+                            {{ col.header }}
+                            <p-sortIcon [field]="col.field" />
+                            <p-columnFilter type="text" [field]="col.field" display="menu" class="ml-auto" />
+                        </div>
+                    </th>
+                }
+            </tr>
+        </ng-template>
+        <ng-template #body let-rowData let-columns="columns">
+            <tr>
+                @for (col of columns; track col) {
+                    <td>
+                        @if(col.field == 'ownerRole') {
+                            <span>
+                                <p-tag [severity]="getSeverity(rowData[col.field])" [value]="rowData[col.field]" />
+                            </span>
+                        }
+                        @else if(col.field == 'ownerName') {
+                            
+                                <img class="mr-2" [alt]="rowData.ownerName" src="https://api.dicebear.com/9.x/dylan/svg?seed={{ rowData.ownerName }}&radius=50" width="40" style="vertical-align: middle" />
+                                {{ rowData.ownerName }}
+                        }
+                        @else if(col.field == 'description') {
+                            {{ rowData[col.field] | limitTo:30 }}
+                        } @else {
+                            {{ rowData[col.field] }}
+                        }
+                    </td>
+                }
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td class="text-center" [colSpan]="columns.length">Nenhuma Tasks Encontrada</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -7,7 +7,8 @@ import { definePreset } from '@primeuix/themes';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 const myPreset = definePreset(Aura, {
     semantic: {
@@ -43,7 +44,8 @@ const myPreset = definePreset(Aura, {
                     section: '{slate.100}',
                     card: '{surface.0}',
                     overlay: '{slate.100}',
-                    content: '{slate.950)'
+                    content: '{slate.950}',
+                    subtitle: '{slate.500}'
                 }
             },
             dark: {
@@ -64,7 +66,8 @@ const myPreset = definePreset(Aura, {
                     section: '{slate.700}',
                     card: '{slate.900}',
                     overlay: '{slate.700}',
-                    content: '{slate.50}'
+                    content: '{slate.50}',
+                    subtitle: '{slate.500}'
                 }
             }
         }
@@ -74,7 +77,7 @@ const myPreset = definePreset(Aura, {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withComponentInputBinding()), 
@@ -87,7 +90,7 @@ export const appConfig: ApplicationConfig = {
                 darkModeSelector: '.my-app-dark',
                 cssLayer: {
                     name: 'primeng',
-                    order: 'app-styles, primeng, another-css-library'
+                    order: 'tailwind-base, primeng, tailwind-utilities'
                 }
             }
         }

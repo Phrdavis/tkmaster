@@ -1,0 +1,107 @@
+/* Container do Header do Drawer */
+.drawer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+}
+
+.logo-icon {
+    font-size: 1.5rem;
+    color: var(--p-primary-500);
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.drawer-content {
+    padding-top: 1rem;
+}
+
+.menu-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--p-surface-subtitle);
+    padding-left: 1rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    color: var(--p-surface-400);
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.menu-list li:hover {
+    background-color: var(--p-surface-ground);
+    color: var(--p-primary-400);
+}
+
+.active-link {
+    background-color: var(--p-surface-ground);
+    color: var(--p-primary-400) !important;
+}
+
+/* .my-app-dark .active-link {
+    background-color: var(--p-primary-900);
+    color: var(--p-primary-100) !important;
+} */
+
+.drawer-footer {
+    border-top: 1px solid var(--p-surface-200);
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-group{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--p-surface-ground);
+    border-radius: 12px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--p-surface-content);
+}
+
+.user-role {
+    font-size: 0.75rem;
+    color: var(--p-surface-subtitle);
+}

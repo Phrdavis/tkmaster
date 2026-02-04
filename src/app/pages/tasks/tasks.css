@@ -1,0 +1,26 @@
+.title-caption{
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.title-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5em;
+    margin-bottom: 1em;
+}
+
+.actions{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.sortable{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1em;
+}
