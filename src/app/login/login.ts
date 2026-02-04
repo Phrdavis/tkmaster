@@ -79,4 +79,8 @@ export class Login {
 
   }
 
+  cadastroNot(){
+    this.messageService.add({severity:'info', summary: 'Info', detail: 'Pagina de Cadastro ainda em construção.'});
+  }
+
 }
