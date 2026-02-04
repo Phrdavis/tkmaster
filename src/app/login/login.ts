@@ -67,7 +67,14 @@ export class Login {
 
       console.log(data);
     } catch (error: validationErrorResponseInterface | any) {
-      this.messageService.add({severity:'error', summary: 'Error', detail: error.error.message});
+      console.log(error)
+      if(error.error?.message){
+        this.messageService.add({severity:'error', summary: 'Error', detail: error.error.message});
+      }else if(error.message){
+        this.messageService.add({severity:'error', summary: 'Error', detail: error.message});
+      }else{
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'An error occurred during login.'});
+      }
     }
 
   }
