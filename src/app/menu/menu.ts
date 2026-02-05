@@ -1,20 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AvatarModule } from 'primeng/avatar';
-import { ButtonModule } from 'primeng/button';
-import { DrawerModule } from 'primeng/drawer';
-import { RippleModule } from 'primeng/ripple';
 import { LoginService } from '../login/login.service';
 import { GlobalService } from '../global/global.service';
+import { SHARED_UI_MODULES } from '../global/ui-imports';
 
 @Component({
   selector: 'app-menu',
   imports: [
-    AvatarModule, 
-    ButtonModule, 
-    DrawerModule, 
-    RippleModule,
-    RouterModule
+    SHARED_UI_MODULES
   ],
   templateUrl: './menu.html',
   styleUrl: './menu.css',

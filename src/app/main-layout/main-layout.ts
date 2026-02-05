@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { Menu } from '../menu/menu';
-import { TagModule } from 'primeng/tag';
-import { ButtonModule } from 'primeng/button';
 import { GlobalService } from '../global/global.service';
+import { SHARED_UI_MODULES } from '../global/ui-imports';
 
 @Component({
   selector: 'app-main-layout',
   imports: [
-    RouterOutlet,
     Menu,
-    TagModule,
-    ButtonModule,
+    SHARED_UI_MODULES
   ],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.css',

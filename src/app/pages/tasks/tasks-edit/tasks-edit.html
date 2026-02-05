@@ -1,0 +1,50 @@
+<p-dialog  header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '35rem' }">
+    <ng-template #header>
+        <div class="inline-flex items-center justify-center gap-2">
+            <p-avatar image="https://api.dicebear.com/9.x/initials/svg?seed=New&radius=50" shape="circle" />
+            <span class="font-bold whitespace-nowrap">{{ title }}</span>
+        </div>
+    </ng-template>
+    <form [formGroup]="reactiveForm" class="row">
+        <p-floatlabel class="col-12 mb-5 mt-5">
+            <p-iconfield>
+                <input pInputText type="text" formControlName="title" id="title" autocomplete="off" class="w-full" />
+                <p-inputicon class="pi pi-bookmark" />
+            </p-iconfield>
+            <label for="title">Titulo</label>
+        </p-floatlabel>
+
+        <p-floatlabel class="col-12 mb-5 mt-5">
+            <p-select 
+                id="owner_label"
+                class="w-full"
+                [options]="users" 
+                formControlName="owner" 
+                optionLabel="name" 
+                [filter]="true" 
+                filterBy="name" 
+                [showClear]="true"
+                [loading]="isLoadingUsers"
+                />
+            <label for="owner_label">Responsável</label>
+        </p-floatlabel>
+
+        <p-editor formControlName="description" placeholder="Descrição" [style]="{ height: '20em' }" class="col-12">
+            <ng-template #header>
+                <span class="ql-formats">
+                    <button type="button" class="ql-bold" aria-label="Bold"></button>
+                    <button type="button" class="ql-italic" aria-label="Italic"></button>
+                    <button type="button" class="ql-underline" aria-label="Underline"></button>
+                </span>
+            </ng-template>
+        </p-editor>
+        
+    </form>
+    @if(mode != modeEnum.VIEW){
+        
+        <ng-template #footer>
+            <p-button label="Cancel" [text]="true" severity="secondary" (click)="visible = false" />
+            <p-button label="Save" [outlined]="true" severity="secondary" (click)="saveTask()" />
+        </ng-template>
+    }
+</p-dialog>

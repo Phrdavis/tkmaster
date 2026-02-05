@@ -1,27 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TasksService } from './tasks.service';
 import { TasksResponse } from './tasks.interface';
 import { PageResponse } from '../../interfaces/paginable.model';
-import { Table, TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-import { TagModule } from 'primeng/tag';
-import { SkeletonModule } from 'primeng/skeleton';
-import { IconFieldModule } from 'primeng/iconfield';
-import { InputIconModule } from 'primeng/inputicon';
-import { InputTextModule } from 'primeng/inputtext';
-import { TruncatePipe } from "../../core/pipes/pipe.limiteTo";
+import { TasksEdit } from './tasks-edit/tasks-edit';
+import { SHARED_UI_MODULES } from '../../global/ui-imports';
+import { ModeEnum } from '../../enums/mode.enum';
 
 @Component({
   selector: 'app-tasks',
   imports: [
-    TableModule,
-    ButtonModule,
-    TagModule,
-    SkeletonModule,
-    IconFieldModule,
-    InputIconModule,
-    InputTextModule,
-    TruncatePipe
+    SHARED_UI_MODULES
   ],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
@@ -37,6 +25,10 @@ export class Tasks {
   public items: TasksResponse[] = [];
   public columns: any[] = [];
   public isLoading: boolean = false;
+
+  public modeEnum = ModeEnum;
+
+  @ViewChild('tasksEdit') tasksEdit: TasksEdit = new TasksEdit();
 
   constructor(
     private tasksService: TasksService
@@ -103,7 +95,7 @@ export class Tasks {
       case 'ADMIN':
         return 'danger';
       default:
-        return 'info';
+        return 'secondary';
     }
   }
 
@@ -113,6 +105,11 @@ export class Tasks {
 
   getFilterFromColumns(){
     return this.columns.map(col => col.field);
+  }
+
+  openEditTask(mode: ModeEnum = ModeEnum.VIEW, title: string = 'Nova Tarefa'){
+    this.tasksEdit.title = title;
+    this.tasksEdit.open(mode);
   }
 
 }

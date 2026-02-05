@@ -1,33 +1,16 @@
 import { Component, inject } from '@angular/core';
-import { CardModule } from 'primeng/card';
-import { ButtonModule } from 'primeng/button';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FloatLabelModule } from 'primeng/floatlabel';
-import { IconFieldModule } from 'primeng/iconfield';
-import { InputIconModule } from 'primeng/inputicon';
-import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
 import { LoginService } from './login.service';
 import { lastValueFrom } from 'rxjs';
-import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { validationErrorResponseInterface } from '../interfaces/error-response.interface';
-import { loginResponseInterface } from '../interfaces/login-response.interface';
 import { GlobalService } from '../global/global.service';
+import { SHARED_UI_MODULES } from '../global/ui-imports';
 
 @Component({
   selector: 'app-login',
   imports: [
-    CardModule,
-    ButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FloatLabelModule,
-    IconFieldModule,
-    InputIconModule,
-    InputTextModule,
-    PasswordModule,
-    ToastModule,
+    SHARED_UI_MODULES
   ],
   providers: [MessageService],
   templateUrl: './login.html',

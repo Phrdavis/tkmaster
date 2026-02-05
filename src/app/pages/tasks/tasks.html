@@ -20,7 +20,7 @@
         <ng-template #caption>
             <div class="title-div">
                 <div class="actions">
-                    <p-button icon="pi pi-plus" label="Novo"></p-button>
+                    <p-button icon="pi pi-plus" label="Novo" (click)="openEditTask(modeEnum.CREATE)"></p-button>
                     <p-button severity="secondary" [outlined]="true"  icon="pi pi-sync" [disabled]="disabledNext" label="Carregar Mais" (click)="getItems(true)"></p-button>
                     <p-iconfield iconPosition="left" class="ml-auto">
                         <p-inputicon>
@@ -74,3 +74,6 @@
         </ng-template>
     </p-table>
 </div>
+
+<app-tasks-edit #tasksEdit>
+    </app-tasks-edit>
