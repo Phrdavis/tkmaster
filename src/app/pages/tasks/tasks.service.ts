@@ -32,4 +32,8 @@ export class TasksService {
 
   }
 
+  saveNewTask(data: any): Observable<any>{
+    return this.http.post<any>(`/api/v1/tasks`, data);
+  }
+
 }

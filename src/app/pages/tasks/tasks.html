@@ -75,5 +75,6 @@
     </p-table>
 </div>
 
-<app-tasks-edit #tasksEdit>
+<app-tasks-edit #tasksEdit
+    (onsave)="getItems()">
     </app-tasks-edit>

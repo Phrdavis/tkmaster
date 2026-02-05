@@ -28,7 +28,7 @@ export class Tasks {
 
   public modeEnum = ModeEnum;
 
-  @ViewChild('tasksEdit') tasksEdit: TasksEdit = new TasksEdit();
+  @ViewChild('tasksEdit') tasksEdit!: TasksEdit;;
 
   constructor(
     private tasksService: TasksService
